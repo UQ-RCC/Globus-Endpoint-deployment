@@ -191,7 +191,6 @@ The following variables should be set prior to running the role m3_globus_part2.
   should be customised for your requirements. Please refer to: https://docs.globus.org/globus-connect-server/v5.4/data-access-guide/#data_access_policies
   - storage_gateway_RestrictPaths: the full path on the target machine to the file
   'path-restrictions.json'. e.g. "file:/home/ec2-user/path-restrictions.json"
-  - storage_gateway_UserDeny: Used to disable system users. e.g. "--user-deny root"
   - storage_gateway_HighAssurance: is the storage gateway high assurance? Requires a subscription.
   - storage_gateway_MFA: is MFA required on the gateway?
   - storage_gateway_IdentityMappings: A list of identity mappings. These are passed directly to the `--identity-mapping` parameter.
@@ -202,20 +201,14 @@ The following variables should be set prior to running the role m3_globus_part2.
   - collection_InfoLink: A URL link to information on your collection
   - collection_Description: a description for you collection
   - collection_Keywords: any key words in a comma separated list.
-  - collection_DestinationPathRestrictions: This is the destination where
-  the file 'sharing-restrictions.json' is copied on the target machine. This file
   should be customised for your requirements. Please refer to: https://docs.globus.org/globus-connect-server/v5.4/data-access-guide/#sharing_configuration
-  - collection_SharingRestrictPaths: the full path on the target machine to the file 'sharing-restrictions.json' e.g. "file:/home/ec2-user/sharing-restrictions.json"
-  - collection_SharingGroupAllow: A unix group name whose members are allow to share data. e.g. "globusallow"
-  - collection_SharingGroupDeny: A unix grop whose members are denied access to share data e.g. "globusdeny"
   - collection_UserMessage: a welcome message for the collection
   - collection_UserMessageLink: A URL that may be helpful to users of the collection.
 
-  Note: To use Sharing, your Globus Endpoint needs to be 'managed' under a Globus subscription. Please refer to the Globus Connect Server installation notes on 'Sharing' for a full explanation.
+  Note: Collection sharing is a violation of UQ's IT policy and has been disabled.
 
 These files will need customising for your site:
 - m3_globusv5_part2/files/path-restrictions.json (update for your site requirements)
-- m3_globusv5_part2/files/sharing-restrictions.json  (update for your site requirements)
 
 The above configuration is an example. Please read the following to better understand Globus installation and customisation options.
 

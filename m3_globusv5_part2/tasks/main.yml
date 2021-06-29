@@ -39,15 +39,6 @@
   debug:
     var: storage_gateway_ID
 
-# Setup collecion sharing path restrictions.
-- name: copy sharing-restrictions.json to manage the path restrictions for the collection.
-  copy:
-    src=sharing-restrictions.json
-    dest="{{ collection_DestinationPathRestrictions }}"
-    mode=644
-  become: yes
-  become_user: root
-
 - pause:
     minutes: 1
 
@@ -59,10 +50,6 @@
             --info-link "{{ collection_InfoLink }}" \
             --description "{{ collection_Description }}" \
             --keywords "{{ collection_Keywords }}" \
-            --allow-guest-collections \
-            --sharing-restrict-paths "{{ collection_SharingRestrictPaths }}" \
-            --posix-sharing-group-allow "{{ collection_SharingGroupAllow }}" \
-            --posix-sharing-group-deny "{{ collection_SharingGroupDeny }}" \
             --user-message "{{ collection_UserMessage }}" \
             --user-message-link "{{ collection_UserMessageLink }}"
   register: collection_results
