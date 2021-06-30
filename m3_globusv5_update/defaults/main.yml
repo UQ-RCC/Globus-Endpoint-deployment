@@ -1,0 +1,10 @@
+---
+storage_gateway_PreferredParallelism: 32
+storage_gateway_PreferredConcurrency: 32
+storage_gateway_MaxParallelism: 32
+storage_gateway_MaxConcurrency: 32
+
+storage_gateway_AuthDomains:
+  - example.com
+
+storage_gateway_UUID: 00000000-0000-0000-0000-000000000000

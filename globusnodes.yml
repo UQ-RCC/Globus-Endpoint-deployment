@@ -15,3 +15,8 @@
   roles:
     - { role: m3_globusv5_part1, tags: [ m3_globus_part1 ] }
     - { role: m3_globusv5_part2, tags: [ m3_globus_part2 ] }
+
+- hosts: 'PrimaryGlobusNode'
+  gather_facts: False
+  roles:
+    - { role: m3_globusv5_update, tags: [ m3_globus_update ] }

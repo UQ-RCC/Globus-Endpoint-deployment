@@ -1,0 +1,19 @@
+- name: configure endpoint
+  command:
+    argv:
+      - globus-connect-server
+      - endpoint
+      - update
+      - --network-use=custom
+      - --preferred-parallelism={{ storage_gateway_PreferredParallelism }}
+      - --max-parallelism={{ storage_gateway_MaxParallelism }}
+      - --preferred-concurrency={{ storage_gateway_PreferredConcurrency }}
+      - --max-concurrency={{ storage_gateway_MaxConcurrency }}
+  become: yes
+  become_user: root
+
+- name: update auth domains
+  shell: echo globus-connect-server storage-gateway update posix 9acd5405-6412-4c44-ac20-450a9dfe64c8 \
+         {{ ['--domain'] | product(storage_gateway_AuthDomains | map('quote')) | map('join', ' ') | list | join(' ') }}
+  become: yes
+  become_user: root
