@@ -2,29 +2,48 @@ MainNode:
   children:
     PrimaryGlobusNode:
       hosts:
-        globus.example.edu.au:
-          ansible_user: "Put user here"
-          ansible_host: "Put host IP here"
+        pol-grid1:
+          ansible_host: pol-grid1-hs.hpc.dc.uq.edu.au
     SecondaryGlobusNodes:
       hosts:
-        globus1.example.edu.au:
-          ansible_user: "Put user here"
-          ansible_host: "Put host IP here"
-        globus2.example.edu.au:
-          ansible_user: "Put user here"
-          ansible_host: "Put host IP here"
+        pol-grid2-hs.hpc.dc.uq.edu.au:
+          ansible_host: pol-grid2-hs.hpc.dc.uq.edu.au
   vars:
-    globus_clientId: Your_client_ID
-    globus_clientSecret: "Your_client_secret"
+    globus_clientId: d29ccf35-5133-495e-9604-2c0f3325091e
+    globus_clientSecret: !vault |
+      $ANSIBLE_VAULT;1.1;AES256
+      61643136613164353564643063316562363965353739333631333434373832323836393665613565
+      6439386636323932646530616132663166613039306565350a656562303239306439303032353538
+      38613234393632613462313662633739663431313865626237636562316536356662653832396137
+      3338343434383863360a633139656666386434663462343462316536353431396133313361666666
+      32353437396434393335356332343734393235313032313138636262653862633066353632356666
+      6335343564303438633432613931303230313130363534396434
+    endpoint_DisplayName: UQ
+    endpoint_Organization: The University of Queensland
+    endpoint_Owner: uqrccsrv@uq.edu.au
 
-ResearchNetworkNode:
-  hosts:
-    globusresearchnetwork.example.edu.au:
-      ansible_user: "Put user here"
-      ansible_host: "Put host IP here"
-  vars:
-      globus_clientId: Your_client_ID
-      globus_clientSecret: "Your_client_secret"
-      endpoint_DisplayName: "Globus Research Network"
-      storage_gateway_DisplayName: "Globus Research Network"
-      collection_DisplayName: "Globus Research Network"
+    globus_subscription: true
+    storage_gateway_DisplayName: UQ QRISdata
+    storage_gateway_AuthDomains:
+    - uq.edu.au
+    storage_gateway_TimeOut: "$((60 * 24 * 5))"
+    # /etc/globus is a good-enough place as any
+    storage_gateway_DestinationPathRestrictions: /etc/globus/path-restrictions.json
+    storage_gateway_RestrictPaths: file:/etc/globus/path-restrictions.json
+    storage_gateway_HighAssurance: false
+    storage_gateway_MFA: false
+    storage_gateway_IdentityMappings:
+      - external:/opt/uq-globus-tools/bin/uq-globus-idmap
+
+    ##
+    # Eat your heart out marketing...
+    ##
+    collection_BasePath: /QRISdata
+    collection_DisplayName: QRIScloud Data
+    collection_Organization: The University of Queensland
+    collection_ContactEmail: rcc-support@uq.edu.au
+    collection_InfoLink: https://qriscloud.org.au
+    collection_Description: QRIScloud Globus Node Services for High Speed data movement
+    collection_Keywords: fast,data,globus,high-speed,parallel,movement
+    collection_UserMessage: Welcome to QRIScloud's Globus high speed data movement platform
+    collection_UserMessageLink: https://qriscloud.org.au
