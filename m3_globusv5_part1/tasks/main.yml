@@ -29,6 +29,9 @@
   become: yes
   become_user: root
 
+- name: fix timezone
+  shell: timedatectl set-timezone Australia/Brisbane
+
 - name: install Globus toolkit latest repo
   yum:
     name: http://downloads.globus.org/toolkit/gt6/stable/installers/repo/rpm/globus-toolkit-repo-latest.noarch.rpm
