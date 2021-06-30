@@ -26,6 +26,13 @@ MainNode:
     storage_gateway_DisplayName: UQ QRISdata
     storage_gateway_AuthDomains:
     - uq.edu.au
+    - qut.edu.au
+    - griffith.edu.au
+    - aarnet.edu.au
+    - uwa.edu.au
+    - sydney.edu.au
+    - swin.edu.au
+    - anu.edu.au
     storage_gateway_TimeOut: "$((60 * 24 * 5))"
     # /etc/globus is a good-enough place as any
     storage_gateway_DestinationPathRestrictions: /etc/globus/path-restrictions.json
@@ -47,3 +54,13 @@ MainNode:
     collection_Keywords: fast,data,globus,high-speed,parallel,movement
     collection_UserMessage: Welcome to QRIScloud's Globus high speed data movement platform
     collection_UserMessageLink: https://qriscloud.org.au
+
+    ##
+    # UQ-specific tuning
+    ##
+    storage_gateway_UUID: 9acd5405-6412-4c44-ac20-450a9dfe64c8
+    storage_gateway_PreferredParallelism: 32
+    storage_gateway_PreferredConcurrency: 32
+    storage_gateway_MaxParallelism: 32
+    storage_gateway_MaxConcurrency: 32
+    # storage_gateway_AuthDomains: See above
