@@ -22,7 +22,9 @@
     name:
       - yum-utils # For yum-config-manager
       - htop      # Beacuse how can anyone live without it?
+      - tmux      # Ditto
       - rsync     # For copying deployment-key.json
+      - setroubleshoot-server
     state: present
   become: yes
   become_user: root
