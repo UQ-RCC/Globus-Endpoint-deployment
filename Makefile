@@ -23,6 +23,12 @@ stage3:
 		--vault-password-file vault_password_file \
 		globusnodes.yml
 
+.PHONY: update
+update:
+	ansible-playbook -K -v -i globusinventory -l PrimaryGlobusNode \
+		--vault-password-file vault_password_file \
+		-t m3_globus_update globusnodes.yml
+
 ##
 # Make sure the following have been run on each node:
 # $ sudo usermod -a -G gcsweb zane
