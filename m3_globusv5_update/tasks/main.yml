@@ -13,7 +13,7 @@
   become_user: root
 
 - name: update auth domains
-  shell: echo globus-connect-server storage-gateway update posix 9acd5405-6412-4c44-ac20-450a9dfe64c8 \
+  shell: globus-connect-server storage-gateway update posix "{{ storage_gateway_UUID }}" \
          {{ ['--domain'] | product(storage_gateway_AuthDomains | map('quote')) | map('join', ' ') | list | join(' ') }}
   become: yes
   become_user: root
