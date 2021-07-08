@@ -224,3 +224,16 @@ Author Information
 
 * Jay van Schyndel - Monash eResearch Centre
 * Zane van Iperen  - UQ Research Computing Centre
+
+
+TODO
+----
+
+* Increase timeout in `/opt/globus/lib/python3.6/site-packages/globus/manager/api/identity_mapping/external_program.py` from 5 to 50
+  ```python
+      DATA_TYPE = "external_identity_mapping#1.0.0"
+      mapping_timeout = 5
+  ```
+* Add `Wants=network-online.target` and `After=network-online.target` to
+  - `/usr/lib/systemd/system/gcs_manager.service`; and
+  - `/usr/lib/systemd/system/gcs_manager_assistant.service`
